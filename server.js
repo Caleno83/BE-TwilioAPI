@@ -2,7 +2,7 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 
-const pino = require("express-pino-logger")();
+// const pino = require("express-pino-logger")();
 
 const client = require("twilio")(
     process.env.TWILIO_ACCOUNT_SID,
@@ -14,6 +14,7 @@ const cors = require("cors");
 const server = express();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
+server.use(cors())
 
 server.post("/groomers/messages", (req, res) => {
     res.header("Content-Type", "application/json");
